@@ -2,10 +2,10 @@ package com.sparta;
 
 import java.util.*;
 
-public class merger {
+public class Merger {
     public static int[] merge(int[] arr1, int[] arr2){
 
-        ArrayList<Integer> outList = new ArrayList<Integer>();
+        ArrayList<Integer> outList = new ArrayList<>();
         boolean merged=false;
 
 
