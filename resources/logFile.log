@@ -1,0 +1,6 @@
+[TRACE] 2022-09-20 00:57:00.381 [main] Starter - Factory method started
+[TRACE] 2022-09-20 00:57:00.400 [main] Starter - Factory created bubble sort
+[TRACE] 2022-09-20 00:57:01.982 [main] Starter - Factory method started
+[TRACE] 2022-09-20 00:57:01.983 [main] Starter - Factory created binary sort
+[TRACE] 2022-09-20 00:57:02.072 [main] Starter - Factory method started
+[TRACE] 2022-09-20 00:57:02.073 [main] Starter - Factory created merge sort
