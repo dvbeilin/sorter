@@ -1,13 +1,18 @@
 package com.sparta;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class Merger {
+    public static Logger logger= LogManager.getLogger(Starter.class);
+
     public static int[] merge(int[] arr1, int[] arr2){
 
         ArrayList<Integer> outList = new ArrayList<>();
         boolean merged=false;
-
+        logger.trace("merger method started");
 
         int len1=arr1.length; int len2=arr2.length;
         int c1=0; int c2=0; //counter variables

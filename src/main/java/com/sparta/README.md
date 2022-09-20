@@ -1,6 +1,7 @@
 # Sorter Project
 
-All of the sorting algorithms will be keeping the duplicate values. The methods will not be modifying the original array, this will be done by cloning the array at the start of the algorithm where needed. where needed, 
+All of the sorting algorithms will be keeping the duplicate values. The methods will not be modifying the original
+array, this will be done by cloning the array at the start of the algorithm where needed. where needed,
 
 ## Bubble sort
 
@@ -36,16 +37,16 @@ array.
 
 ```java
 if(c1==len1||c2==len2){
-        while(c1<len1){
+    while(c1<len1){
         outList.add(arr1[c1]);
         c1++;
-        }
-        while(c2<len2){
+    }
+    while(c2<len2){
         outList.add(arr2[c2]);
         c2++;
-        }
-        if(c1==len1&&c2==len2)merged=true;
-        }
+    }
+    if(c1==len1&&c2==len2)
+        merged=true;}
 ```
 
 ### The recursive part:
@@ -78,24 +79,47 @@ int[]arr1=Arrays.copyOfRange(ints,0,len/2);
 
 The binary structure has left child nodes smaller than the parent, but right nodes are greater or equal. This is to
 support non removal of duplicates.
+</br>
+For example, in addData method,
+
+```java
+public void addData(int val){
+    if(val<this.treeVal){
+        //code here to add to the left subtree
+        }
+    else{ // code here to add to the right subtree
+    }
+}
+ ```
 
 The tree has two methods, addData and getData. The latter gives an in-order traversal of the binary subtree starting
 from the supplied node.
 It returns an ArrayList object.
+</br>
+Both methods are recursive.
+
 
 ### Binary Sort itself
 
 We have a special case to handle 0-length arrays
 
 ```java
-        if(len==0){
-        return arrayToSort;
-        }
+if(len==0){
+    return arrayToSort;
+}
 ```
+
 As the code that follows presupposes at least one value, which can be the root of the binary tree.
 </br>
-We populate the binary tree by iterating through the supplied array, and the call getData to do an inorder traversal of the tree and obtain an ArrayList object which is in order.
+We populate the binary tree by iterating through the supplied array, and the call getData to do an inorder traversal of
+the tree and obtain an ArrayList object which is in order.
 We then convert this to an array.
+
+## Comparing
+
+We run the test 1000 times, and average the values.
+For small length arrays, bubble sort is the fastest, but it gets very inefficient for large length arrays.
+
 ## Testing
 
 We check if zero length arrays break the sorters
@@ -104,6 +128,24 @@ We check if zero length arrays break the sorters
     @Test//test to check if zero arrays break the program
 public void testZero(){
         int[]empty=new int[0];
-        assertArrayEquals(empty,bubble.sortArray(empty));assertArrayEquals(empty,merge.sortArray(empty));assertArrayEquals(empty,binary.sortArray(empty));
-        }
+        assertArrayEquals(empty,bubble.sortArray(empty));
+        assertArrayEquals(empty,merge.sortArray(empty));
+        assertArrayEquals(empty,binary.sortArray(empty));}
 ```
+
+We have a testSize method to check if sorting an array changes its size. This should not happen, as we do not remove duplicates.
+```java
+@Test //test to check if sorted array is the same size as unsorted
+public void testSize(){
+    int[] arr =RandArr.randArr(10000,1000);
+    for (int i=0;i<3;i++){
+        Sorter sorter=Factory.factory(i);
+        int[] arrSorted=sorter.sortArray(arr);
+        assertEquals(arr.length, arrSorted.length);
+    }
+}
+```
+This sorts arrays and checks whether their sizes are the same.
+
+</br>
+testMerge checks the merge function itself. We generate random sorted arrays, by having each following value by a random increment.

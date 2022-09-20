@@ -4,12 +4,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 
+import static com.sparta.ViewManager.generateTest;
+
 public class Starter {
     public static Logger logger= LogManager.getLogger(Starter.class);
 
     public static void start(){
 
         int[] arr=ViewManager.getArray();
+        System.out.println("the array is: "+ Arrays.toString(arr));
         Sorter sort;
 
         System.out.println("Which sort would you like to use?");
@@ -22,7 +25,6 @@ public class Starter {
         else if (algorithm.equals("merge sort")){
             sort=new MergeSort();
             logger.info("We chose merge sort");
-
         }
         else {
             sort =new BinarySort();
@@ -32,6 +34,11 @@ public class Starter {
 
         int[] arrOut =sort.sortArray(arr);
         System.out.println("Sorted Array is  "+ Arrays.toString(arrOut));
+
+
+        generateTest(arr);
+
+
 
 
     }

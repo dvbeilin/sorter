@@ -73,4 +73,14 @@ class MainTest {
         Arrays.sort(arrSorted);
         assertArrayEquals(arrOut,arrSorted);
     }
+
+    @Test //test to check if sorted array is the same size as unsorted
+    public void testSize(){
+        int[] arr =RandArr.randArr(10000,1000);
+        for (int i=0;i<3;i++){
+            Sorter sorter=Factory.factory(i);
+            int[] arrSorted=sorter.sortArray(arr);
+            assertEquals(arr.length, arrSorted.length);
+        }
+    }
 }
